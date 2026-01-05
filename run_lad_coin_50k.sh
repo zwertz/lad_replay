@@ -25,12 +25,14 @@ fi
 
 # Define an array of directories to search
 directories=(./raw/ ./cache/) #  ./cache/ currently causing problems
+#E. Wertz modified 09/18/2025
+#directories=( /lustre24/expphy/cache/hallc/c-lad/raw)
 # lastRunFile=$(find "${directories[@]}" -type f -name "*${runNum}.dat.0")
 
 # Use find to search in all directories
 # lastRunFile=$(find "${directories[@]}" -type f -name "*${runNum}.dat.0")
 for dir in "${directories[@]}"; do
-  lastRunFile=$(ls "${dir}"/*"${runNum}.dat.0" 2>/dev/null | head -n 1)
+    lastRunFile=$(ls "${dir}"/*"${runNum}.dat.0" 2>/dev/null | head -n 1)
   if [[ -n $lastRunFile ]]; then
     break
   fi
@@ -38,6 +40,7 @@ done
 
 #/volatile/hallc/c-lad/ehingerl/raw_data/LAD_cosmic/
 # Determine the run_type based on the lastRun value
+
 case "$lastRunFile" in
 *Production_noGEM*) run_type=1 ;;
 *Production*) run_type=0 ;;

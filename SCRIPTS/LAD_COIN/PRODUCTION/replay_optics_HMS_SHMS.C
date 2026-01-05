@@ -9,7 +9,7 @@
 
 // #include "../../LAD/LAD_link_defs.h" //Leave this line commented. Used for debugging purposes only.
 
-void replay_production_no_lad(int RunNumber = 0, int MaxEvent = 0, int run_type = 1, int FirstEvent = 1,
+void replay_optics_HMS_SHMS(int RunNumber = 0, int MaxEvent = 0, int run_type = 1, int FirstEvent = 1,
                                 int MaxSegment = 0, int FirstSegment = 0) {
 
   // Get RunNumber and MaxEvent if not provided.
@@ -85,10 +85,12 @@ void replay_production_no_lad(int RunNumber = 0, int MaxEvent = 0, int run_type 
 
   //(CA)
   TString REPORTFileName;
-  REPORTFileNamePattern = "REPORT_OUTPUT/LAD_COIN/PRODUCTION/replayReport_LAD_coin_production_%d_%d_%d_%d.report";
+  //REPORTFileNamePattern = "REPORT_OUTPUT/LAD_COIN/PRODUCTION/replayReport_LAD_coin_production_%d_%d_%d_%d.report";
+  REPORTFileNamePattern = "REPORT_OUTPUT/LAD_COIN/PRODUCTION/replayReport_LAD_Optics_production_%d_%d_%d_%d.report";
   REPORTFileName        = Form(REPORTFileNamePattern, RunNumber, FirstSegment, MaxSegment, MaxEvent);
 
-  ROOTFileNamePattern = "ROOTfiles/LAD_COIN/PRODUCTION/LAD_COIN_%d_%d_%d_%d.root";
+  //ROOTFileNamePattern = "ROOTfiles/LAD_COIN/PRODUCTION/LAD_COIN_%d_%d_%d_%d.root";
+  ROOTFileNamePattern = "ROOTfiles/LAD_COIN/PRODUCTION/LAD_Optics_%d_%d_%d_%d.root";
   ROOTFileName        = Form(ROOTFileNamePattern, RunNumber, FirstSegment, MaxSegment, MaxEvent);
   // ROOTFileNamePattern = "ROOTfiles/LAD_COIN/PRODUCTION/LAD_COIN_production_hall_%d_%d.root";
   // ROOTFileNamePattern = "ROOTfiles/LAD_COIN/CALIBRATION/LAD_COIN_calibration_hall_%d_%d.root";
@@ -98,7 +100,11 @@ void replay_production_no_lad(int RunNumber = 0, int MaxEvent = 0, int run_type 
 
   // Load global parameters
   gHcParms->Define("gen_run_number", "Run Number", RunNumber);
-  gHcParms->AddString("g_ctp_database_filename", "DBASE/LAD_COIN/standard.database");
+
+  //Changed database file to point to a file just for optics to be different from standard.
+  //Mainly testing purpose for E. Wertz
+  //gHcParms->AddString("g_ctp_database_filename", "DBASE/LAD_COIN/standard.database");
+  gHcParms->AddString("g_ctp_database_filename", "DBASE/LAD_COIN/optics.database");
   gHcParms->Load(gHcParms->GetString("g_ctp_database_filename"), RunNumber);
   gHcParms->Load(gHcParms->GetString("g_ctp_parm_filename"));
   gHcParms->Load(gHcParms->GetString("g_ctp_kinematics_filename"), RunNumber);
@@ -346,6 +352,7 @@ void replay_production_no_lad(int RunNumber = 0, int MaxEvent = 0, int run_type 
   analyzer->SetEvent(event);
   // Set EPICS event type
   analyzer->SetEpicsEvtType(181);
+  analyzer->AddEpicsEvtType(182);
   // Define crate map
   analyzer->SetCrateMapFileName("MAPS/db_cratemap.dat");
   // analyzer->SetCrateMapFileName("MAPS/db_cratemap_lad.dat");// Temp set it to only LAD to avoid error
@@ -353,7 +360,9 @@ void replay_production_no_lad(int RunNumber = 0, int MaxEvent = 0, int run_type 
   // Define output ROOT file
   analyzer->SetOutFile(ROOTFileName.Data());
   // Define DEF-file
-  analyzer->SetOdefFile("DEF-files/LAD_COIN/PRODUCTION/coin_production_lad.def");
+  //analyzer->SetOdefFile("DEF-files/LAD_COIN/PRODUCTION/coin_production_lad.def");
+  //DEF-file for just relevant optics parameters
+  analyzer->SetOdefFile("DEF-files/LAD_COIN/PRODUCTION/optics_HMS_SHMS.def");
   // Define cuts file
   analyzer->SetCutFile("DEF-files/LAD_COIN/PRODUCTION/CUTS/coin_production_cuts_lad.def"); // optional
   // File to record accounting information for cuts

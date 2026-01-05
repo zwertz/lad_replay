@@ -1,0 +1,119 @@
+#real raddeg
+raddeg=3.14159265/180
+#real cminch
+cminch=2.54
+
+; General Hall-C parameter files
+#include "PARAM/GEN/genflags.param"
+#include "PARAM/GEN/gdebug.param"
+#include "PARAM/GEN/gtarget.param"
+; E.Wertz gbeam.param seems to have the correct beam information at first check.
+#include "PARAM/GEN/gbeam.param"
+#include "PARAM/GEN/gscalers.param"
+
+; General HMS parameter files
+; Note: hmsflags.param includes spectrometer offsets and options.
+; E.Wertz the optics matrix in hcana.param should be the one we start with.
+#include "PARAM/HMS/GEN/hcana_optics.param"
+#include "PARAM/HMS/GEN/hdebug.param"
+; E.Wertz hmsflags.param has all offsets as zero, which seems like fine start.
+#include "PARAM/HMS/GEN/hmsflags.param"
+#include "PARAM/HMS/GEN/htracking.param"
+#include "PARAM/HMS/GEN/h_reftime_cut.param"
+;#include "PARAM/HMS/GEN/h_no_reference_times.param"
+
+; HMS default geometry parameter files 
+#include "PARAM/HMS/CER/hcer_geom.param"
+#include "PARAM/HMS/DC/hdc_geom.param"
+#include "PARAM/HMS/HODO/hhodo_geom.param"
+#include "PARAM/HMS/AERO/haero_geom.param"
+#include "PARAM/HMS/CAL/hcal_geom.param"
+
+; HMS default cut parameter files
+#include "PARAM/HMS/CER/hcer_cuts.param"
+#include "PARAM/HMS/DC/hdc_cuts.param"
+#include "PARAM/HMS/HODO/hhodo_cuts.param"
+#include "PARAM/HMS/AERO/haero_cuts.param"
+#include "PARAM/HMS/CAL/hcal_cuts.param"
+
+; HMS default calibration parameter files
+#include "PARAM/HMS/CER/hcer_calib.param"
+#include "PARAM/HMS/DC/hdc_calib.param"
+#include "PARAM/HMS/DC/hdc_tzero_per_wire.param"
+#include "PARAM/HMS/HODO/hhodo_calib.param"
+#include "PARAM/HMS/HODO/hhodo_TWcalib.param"
+#include "PARAM/HMS/HODO/hhodo_Vpcalib.param"
+#include "PARAM/HMS/AERO/haero_calib.param"
+;#include "PARAM/HMS/CAL/hcal_calib.param"
+#include "PARAM/HMS/CAL/hcal_calib_spring25.param"
+#include "PARAM/HMS/CAL/hcal_calib_sp25_4p4.param"
+
+; General SHMS parameter files
+; Note: shmsflags.param includes spectrometer offsets and options.
+; E. Wertz I have altered pcana to point to different matrix elements for testing.
+#include "PARAM/SHMS/GEN/pcana_optics.param"
+#include "PARAM/SHMS/GEN/pdebug.param"
+; E. Wertz shmsflags.param remains unchanged. Nonzero variables. Per documentation doesn't seem unreasonable start
+#include "PARAM/SHMS/GEN/shmsflags.param"
+#include "PARAM/SHMS/GEN/ptracking.param"
+#include "PARAM/SHMS/GEN/p_reftime_cut.param"
+;#include "PARAM/SHMS/GEN/p_no_reference_times.param"
+
+; SHMS default geometry parameter files
+#include "PARAM/SHMS/NGCER/pngcer_geom.param"
+#include "PARAM/SHMS/DC/pdc_geom_fa22.param"
+#include "PARAM/SHMS/HODO/phodo_geom.param"
+#include "PARAM/SHMS/HGCER/phgcer_geom.param"
+#include "PARAM/SHMS/AERO/paero_geom.param"
+#include "PARAM/SHMS/CAL/pcal_geom.param"
+
+; SHMS default cut parameter files
+#include "PARAM/SHMS/NGCER/pngcer_cuts.param"
+#include "PARAM/SHMS/DC/pdc_cuts_fa22.param"
+#include "PARAM/SHMS/HODO/phodo_cuts.param"
+#include "PARAM/SHMS/HGCER/phgcer_cuts.param"
+#include "PARAM/SHMS/AERO/paero_cuts.param"
+#include "PARAM/SHMS/CAL/pcal_cuts.param"
+
+; SHMS default calibration parameter files
+#include "PARAM/SHMS/NGCER/pngcer_calib_fa22.param"
+#include "PARAM/SHMS/DC/pdc_calib_fa22.param";need to change
+;#include "PARAM/SHMS/DC/pdc_tzero_per_wire_fa22.param";need to chang
+#include "PARAM/SHMS/DC/pdc_tzero_per_wire.param";need to chang
+#include "PARAM/SHMS/HODO/phodo_calib_fa22.param"
+#include "PARAM/SHMS/HODO/phodo_TWcalib_fa22.param"
+#include "PARAM/SHMS/HODO/phodo_Vpcalib_fa22.param"
+#include "PARAM/SHMS/HGCER/phgcer_calib_fa22.param"
+#include "PARAM/SHMS/AERO/paero_calib_fa22.param"
+#include "PARAM/SHMS/CAL/pcal_calib_sp25_4p4.param"
+
+; LAD Parameter files
+#include "PARAM/GEN/genflags.param"
+#include "PARAM/GEN/gdebug.param"
+
+#include "PARAM/LAD/HODO/lhodo_geom.param"
+;#include "PARAM/LAD/HODO/lhodo_cuts.param"
+;#include "PARAM/LAD/HODO/lhodo_cuts_no_timing_windows.param"
+#include "PARAM/LAD/HODO/lhodo_cuts_May16.param"
+#include "PARAM/LAD/HODO/lhodo_calib.param"
+;#include "PARAM/LAD/HODO/ladhodo_Vpcalib.param"
+#include "PARAM/LAD/HODO/ladhodo_Vpcalib_22827.param"
+
+#include "PARAM/LAD/HODO/lhodo_TWcalib_186.param"
+
+; LAD GEM Parameter files
+#include "PARAM/LAD/GEM/lgem_geom.param"
+#include "PARAM/LAD/GEM/lgem_cuts.param"
+
+; LAD Kinematics Parameter files
+#include "PARAM/LAD/LADKINE/lladkine.param"
+
+;Be aware of the files below. They are not called here, but have to be included in lgem_geom.param
+;#include "PARAM/LAD/GEM/CommonModeRange_1683.txt"
+;#include "PARAM/LAD/GEM/gem_ped_1683.dat"
+
+; Trigger files
+; Will need to change these
+#include "PARAM/TRIG/tshms.param"
+#include "PARAM/TRIG/thms.param"
+

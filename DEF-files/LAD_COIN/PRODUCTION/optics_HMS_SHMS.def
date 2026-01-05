@@ -1,0 +1,53 @@
+
+#E.Wertz variables necessary from Optics documentation. Need to check if too many variables. Or if replay time long.
+
+block H.react.*
+block H.gtr.*
+block H.extcor.*
+block H.dc.*
+block H.kin.*
+block H.rb.*
+block H.cer.*
+block H.cal.*
+
+block P.react.*
+block P.gtr.*
+block P.extcor.*
+block P.dc.*
+block P.kin.*
+block P.rb.*
+block P.ngcer.*
+block P.cal.*
+
+begin epics
+
+IBC3H00CRCUR4
+hac_bcm_average
+ibcm1
+ibcm2
+iunser
+itov3out
+itov4out
+
+#Spectrometer Settings
+ecHMS_Angle
+ecP_HMS
+
+#Magnet Currents
+ecQ1_Set_Current
+ecQ2_I_True
+ecQ2_Set_Current
+ecQ2_I_True
+ecQ3_Set_Current
+ecQ3_I_True
+ecDI_B_Set_NMR
+ecDI_B_True_NMR
+IPM3H07A.XRAW
+IPM3H07A.YRAW
+IPM3H07B.XRAW
+IPM3H07B.YRAW
+IPM3H07C.XRAW
+IPM3H07C.YRAW
+
+
+end epics

@@ -11,6 +11,7 @@
 
 ; Add new variables for Hall C BPM A, B, and C, based on HARP calibration
 ; Updated  by Dave Gaskell
+; E. Wertz from Hall C BPM calibration info on Hall C Wiki. slope values are consistent with 09/15/2023 calibration. offset values are consistent with 04/03/2025 calibration. Which seems fine for LAD.
 ;
   gbpmxa_slope = -1.02
   gbpmxa_off   = +0.19
