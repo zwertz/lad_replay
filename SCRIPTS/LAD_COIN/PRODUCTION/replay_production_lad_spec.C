@@ -42,8 +42,10 @@ void load_GEM_CM_PED(int runNumber) {
     }
   }
 
-  gHcParms->AddString("lgem_pedfile", Form("PARAM/LAD/GEM/PED/gem_ped_%d.dat", ped_cm_file_num));
-  gHcParms->AddString("lgem_cmfile", Form("PARAM/LAD/GEM/CM/CommonModeRange_%d.txt", ped_cm_file_num));
+  //gHcParms->AddString("lgem_pedfile", Form("PARAM/LAD/GEM/PED/gem_ped_%d.dat", ped_cm_file_num));
+  gHcParms->AddString("lgem_pedfile", Form("PARAM/LAD/GEM/PED/daq_ped_L_gem_run%d.dat", ped_cm_file_num));
+  gHcParms->AddString("lgem_cmfile", Form("PARAM/LAD/GEM/CM/db_cmr_L_gem_run%d.dat", ped_cm_file_num));
+  //gHcParms->AddString("lgem_cmfile", Form("PARAM/LAD/GEM/CM/CommonModeRange_%d.txt", ped_cm_file_num));
   return;
 }
 
@@ -152,7 +154,7 @@ void replay_production_lad_spec(int RunNumber = 0, int MaxEvent = 0, int run_typ
   // Load map depending on whether run is before or after SHMS DC swap
   gHcDetectorMap = new THcDetectorMap();
   if (RunNumber < 22157)
-    gHcDetectorMap->Load("MAPS/LAD_COIN/DETEC/coin_lad.map");
+    gHcDetectorMap->Load("MAPS/LAD_COIN/DETEC/coin_lad_3pass_swapped_DC.map");
   else if (RunNumber < 22590)
     gHcDetectorMap->Load("MAPS/LAD_COIN/DETEC/coin_lad_5pass.map");
   else
